@@ -32,7 +32,7 @@ a {
 
 button, a {
   cursor: pointer;
-  transition: filter 0.3;
+  transition: filter 0.3s;
 }
 
 button:hover, a:hover {
