@@ -23,7 +23,7 @@ export function New() {
             <Form id="scroll">
                 <h1>Novo Filme</h1>
 
-                <div class="col-2">
+                <div className="col-2">
                     <Input
                         type="text"
                         placeholder="Título"
@@ -40,7 +40,7 @@ export function New() {
                 />
 
                 <Section title="Marcadores">
-                    <div class="tags">
+                    <div className="tag-group">
                         <MovieItem
                             value="Drama"
                         />
@@ -50,10 +50,11 @@ export function New() {
                         />
                     </div>
                 </Section>
-                <div class="col-2">
+                <div className="col-2">
 
                     <Button
                         title="Excluir filme"
+                        className="delete"
                     />
 
                     <Button

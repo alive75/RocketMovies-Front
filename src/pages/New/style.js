@@ -31,21 +31,30 @@ export const Form = styled.div`
     h1 {
     font-size: 36px;
     font-weight: 400;
+margin-bottom:  40px;
 }
     .col-2 {
     display: flex;
     width: 100%;
-    gap: 40px;
-    margin: 40px 0;
+gap: 40px;
+margin-bottom:  40px;
 }
 
     textarea {
-    margin-bottom: 0;
+
+margin-bottom:  40px;
+  flex-direction: row;
+}
+
+button {
+margin: 0;
+}
+.delete {
+background-color: ${({ theme }) => theme.COLORS.BLACK};
+color: ${({ theme }) => theme.COLORS.RED};
 }
 
 `
 
-export const Section = styled.div`
 
 
-`

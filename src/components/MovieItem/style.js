@@ -12,7 +12,7 @@ export const Container = styled.div`
   background-color: ${({ theme, isNew }) => isNew ? "transparent" : theme.COLORS.BACKGROUND_700};
   color: ${({ theme }) => theme.COLORS.WHITE_100};
   
-  border: ${({ theme, isNew }) => isNew ? `1px dashed ${theme.COLORS.GRAY_200}` : "none"};
+  border: ${({ theme, isNew }) => isNew ? `2px dashed ${theme.COLORS.GRAY_200}` : "none"};
   border-radius: 10px;
 
   > button {
@@ -21,13 +21,14 @@ export const Container = styled.div`
   color: ${({ theme }) => theme.COLORS.RED};
 }
 
-  > input{
+  >input{
+  width: auto;
+  height: 56px;
   border: none;
   background: transparent;
 
   padding: 16px;
 
-  width: 100%;
 
   color: ${({ theme }) => theme.COLORS.WHITE_100};
   

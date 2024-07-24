@@ -17,7 +17,6 @@ border: 0;
 border-radius: 10px;
 
 
-
   > svg {
     margin-right: 2.5px;
   }

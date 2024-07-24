@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 
-    margin: 40px 0;
+margin-bottom:  40px;
 
     h2 {
     font-size: 20px;
@@ -11,13 +11,13 @@ export const Container = styled.div`
     margin-bottom: 24px;
     }
 
-    div .tags {
+    .tag-group {
     display: flex;
     background-color: ${({ theme }) => theme.COLORS.BLACK};
-    width: 100%;
     height: 88px;
     border-radius: 8px;
     padding: 16px;
+
 }
 
     
