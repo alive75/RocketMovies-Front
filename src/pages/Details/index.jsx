@@ -4,6 +4,7 @@ import { ButtonText } from "../../components/ButtonText";
 import { Tag } from "../../components/Tag";
 import { Stars } from "../../components/Stars";
 import { Header } from "../../components/Header"
+import { useNavigate } from "react-router-dom"
 
 export function Details() {
     const tags = [{
@@ -20,7 +21,15 @@ export function Details() {
     },
 
     ]
+
+    const navigate = useNavigate()
+
+    function handleBack() {
+        navigate(-1)
+    }
+
     return (
+
         <Container>
 
             <Header />
@@ -28,6 +37,7 @@ export function Details() {
                 <ButtonText
                     icon={LuArrowLeft}
                     title="Voltar"
+                    onClick={handleBack}
                 />
             </Top>
             Top

@@ -7,8 +7,16 @@ import { Textarea } from "../../components/Textarea";
 import { MovieItem } from "../../components/MovieItem";
 import { Section } from "../../components/Section";
 import { LuArrowLeft } from "react-icons/lu"
+import { useNavigate } from "react-router-dom"
 
 export function New() {
+
+    const navigate = useNavigate()
+
+    function handleBack() {
+        navigate(-1)
+    }
+
     return (
         <Container>
             <Header />
@@ -17,6 +25,7 @@ export function New() {
                 <ButtonText
                     icon={LuArrowLeft}
                     title="Voltar"
+                    onClick={handleBack}
                 />
             </Top>
 

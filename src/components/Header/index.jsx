@@ -1,38 +1,52 @@
 import { Container, Brand, Profile } from "./style";
 import { ButtonText } from "../ButtonText"
 import { Input } from "../Input"
+import { useNavigate } from "react-router-dom"
 
 export function Header() {
-  return(
-    <Container>
-      <Brand>
-        <ButtonText
-        title="RocketMovies"
-        />
-      </Brand>
-      
-      <Input
-        placeholder="Pesquisar pelo título"
-      />
 
-      <Profile>
-        <div>
-        <a href="#">Thiago Santana</a>
+    const navigate = useNavigate()
 
-        <span>
-        <ButtonText
-          title="sair"
-        />
+    function handleHome() {
+        navigate('/')
+    }
 
-        </span>
-        </div>
+    function handleSignOut() {
+        navigate('/')
+    }
 
-        <a href="#">
-        <img src="http://github.com/alive75.png" alt="Thiago Santana" />
-        </a>
-      </Profile>
+    return (
+        <Container>
+            <Brand>
+                <ButtonText
+                    title="RocketMovies"
+                    onClick={handleHome}
+                />
+            </Brand>
 
-    </Container>
-  )
-  
+            <Input
+                placeholder="Pesquisar pelo título"
+            />
+
+            <Profile>
+                <div>
+                    <a href="/profile">Thiago Santana</a>
+
+                    <span>
+                        <ButtonText
+                            title="sair"
+                            onClick={handleSignOut}
+                        />
+
+                    </span>
+                </div>
+
+                <a href="/profile">
+                    <img src="http://github.com/alive75.png" alt="Thiago Santana" />
+                </a>
+            </Profile>
+
+        </Container>
+    )
+
 }
