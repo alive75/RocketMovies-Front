@@ -1,4 +1,4 @@
-import styled  from "styled-components"
+import styled from "styled-components"
 import backgroundImg from '../../assets/background.png'
 
 export const Container = styled.div`
@@ -34,8 +34,13 @@ export const Form = styled.div`
     margin: 48px 0;
   }
 
-  button:nth-child(2n) {
+  span {
+  display: flex;
+  justify-content: center;
+}
+  span button {
     margin-top: 42px;
+    color: ${({ theme }) => theme.COLORS.RED};
   }
 
 `
