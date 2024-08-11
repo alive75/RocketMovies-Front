@@ -1,3 +1,7 @@
+import { useState } from "react"
+
+import { useAuth } from "../../hooks/auth"
+
 import { Container, Background, Form } from "./styles"
 import { Input } from '../../components/Input'
 import { Button } from "../../components/Button"
@@ -8,6 +12,14 @@ import { useNavigate } from "react-router-dom"
 export function SignIn() {
 
     const navigate = useNavigate()
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const { signIn } = useAuth()
+
+    function handleSignIn() {
+        signIn({ email, password })
+    }
 
     function handleRegister() {
         navigate('/register')
@@ -24,15 +36,18 @@ export function SignIn() {
                     placeholder="E-mail"
                     type="text"
                     icon={LuMail}
+                    onChange={e => setEmail(e.target.value)}
                 />
                 <Input
                     placeholder="Senha"
                     type="password"
                     icon={LuLock}
+                    onChange={e => setPassword(e.target.value)}
                 />
 
                 <Button
                     title="Entrar"
+                    onClick={handleSignIn}
                 />
 
                 <span>

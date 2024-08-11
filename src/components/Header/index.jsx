@@ -1,10 +1,14 @@
+import { useAuth } from "../../hooks/auth";
 import { Container, Brand, Profile } from "./style";
 import { ButtonText } from "../ButtonText"
 import { Input } from "../Input"
+import avatarPlaceholder from "../../assets/avatar_placeholder.svg"
 import { useNavigate } from "react-router-dom"
+import { api } from "../../services/api";
 
 export function Header() {
 
+    const { signOut, user } = useAuth()
     const navigate = useNavigate()
 
     function handleHome() {
@@ -13,7 +17,10 @@ export function Header() {
 
     function handleSignOut() {
         navigate('/')
+        signOut()
     }
+
+    const avatarURL = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
     return (
         <Container>
@@ -30,7 +37,7 @@ export function Header() {
 
             <Profile>
                 <div>
-                    <a href="/profile">Thiago Santana</a>
+                    <a href="/profile">{user.name}</a>
 
                     <span>
                         <ButtonText
@@ -42,7 +49,7 @@ export function Header() {
                 </div>
 
                 <a href="/profile">
-                    <img src="http://github.com/alive75.png" alt="Thiago Santana" />
+                    <img src={avatarURL} alt={user.name} />
                 </a>
             </Profile>
 
