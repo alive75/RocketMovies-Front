@@ -1,7 +1,7 @@
 import { Container } from "./style";
 import { LuPlus, LuX } from "react-icons/lu"
 
-export function MovieItem({ isNew, value, ...rest }) {
+export function MovieItem({ isNew, value, onClick, ...rest }) {
     return (
         <Container isNew={isNew}>
             <input
@@ -12,6 +12,7 @@ export function MovieItem({ isNew, value, ...rest }) {
             />
             <button
                 type="button"
+                onClick={onClick}
                 className={isNew ? 'button-add' : 'button-delete'}
             >
                 {isNew ? <LuPlus /> : <LuX />}

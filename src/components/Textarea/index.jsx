@@ -1,7 +1,7 @@
 import { Container } from "./style";
 
 export function Textarea({ value, ...rest }) {
-  return(
+  return (
     <Container {...rest}>
       {value}
     </Container>
