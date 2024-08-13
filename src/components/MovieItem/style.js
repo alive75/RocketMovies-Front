@@ -9,10 +9,10 @@ export const Container = styled.div`
   padding-right: 16px;
 
 
-  background-color: ${({ theme, isNew }) => isNew ? "transparent" : theme.COLORS.BACKGROUND_700};
+  background-color: ${({ theme, $isnew }) => $isnew ? "transparent" : theme.COLORS.BACKGROUND_700};
   color: ${({ theme }) => theme.COLORS.WHITE_100};
   
-  border: ${({ theme, isNew }) => isNew ? `2px dashed ${theme.COLORS.GRAY_200}` : "none"};
+  border: ${({ theme, $isnew }) => $isnew ? `2px dashed ${theme.COLORS.GRAY_200}` : "none"};
   border-radius: 10px;
 
   > button {

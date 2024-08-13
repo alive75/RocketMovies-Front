@@ -1,21 +1,21 @@
 import { Container } from "./style";
 import { LuPlus, LuX } from "react-icons/lu"
 
-export function MovieItem({ isNew, value, onClick, ...rest }) {
+export function MovieItem({ $isnew, value, onClick, ...rest }) {
     return (
-        <Container isNew={isNew}>
+        <Container $isnew={$isnew}>
             <input
                 type="text"
                 value={value}
-                readOnly={!isNew}
+                readOnly={!$isnew}
                 {...rest}
             />
             <button
                 type="button"
                 onClick={onClick}
-                className={isNew ? 'button-add' : 'button-delete'}
+                className={$isnew ? 'button-add' : 'button-delete'}
             >
-                {isNew ? <LuPlus /> : <LuX />}
+                {$isnew ? <LuPlus /> : <LuX />}
             </button>
         </Container>
     )

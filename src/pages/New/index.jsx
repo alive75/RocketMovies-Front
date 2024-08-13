@@ -123,7 +123,7 @@ export function New() {
                             ))
                         }
                         <MovieItem
-                            isNew
+                            $isnew={true}
                             placeholder="Novo marcador"
                             onChange={e => setNewTag(e.target.value)}
                             value={newTag}
