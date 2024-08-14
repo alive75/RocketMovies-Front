@@ -2,21 +2,21 @@ import { Container } from "./style";
 import { Tag } from "../Tag"
 import { Stars } from "../Stars";
 
-export function MovieCard({ title, rating, description, tags }) {
+export function MovieCard({ data, ...rest }) {
 
 
     return (
         <Container>
-            <h1>{title}</h1>
-            <span><Stars rating={rating} /></span>
-            <p>{description}</p>
+            <h1>{data.title}</h1>
+            <span><Stars rating={String(data.rating)} /></span>
+            <p>{data.description}</p>
 
 
             {
-                tags &&
+                data.tags &&
                 <footer>
                     {
-                        tags.map(tag => <Tag key={tag.id} title={tag.name} />)
+                        data.tags.map(tag => <Tag key={tag.id} title={tag.name} />)
                     }
                 </footer>
             }

@@ -4,6 +4,7 @@ import { StarEmpty } from "../StarEmpty"
 export function Stars({ rating }) {
 
     let stars
+    console.log(rating)
 
     switch (rating) {
         case '0':
@@ -70,11 +71,11 @@ export function Stars({ rating }) {
 
         default:
             stars = <>
-                <Star />
-                <Star />
-                <Star />
-                <Star />
-                <Star />
+                <StarEmpty />
+                <StarEmpty />
+                <StarEmpty />
+                <StarEmpty />
+                <StarEmpty />
             </>
 
             break
