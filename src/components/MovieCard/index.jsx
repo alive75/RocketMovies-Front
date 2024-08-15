@@ -6,7 +6,7 @@ export function MovieCard({ data, ...rest }) {
 
 
     return (
-        <Container>
+        <Container {...rest}>
             <h1>{data.title}</h1>
             <span><Stars rating={String(data.rating)} /></span>
             <p>{data.description}</p>

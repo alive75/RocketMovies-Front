@@ -10,8 +10,10 @@ export const Container = styled.div`
   border: none;
   border-radius: 16px;
   padding: 32px;
+  cursor: pointer;
 
   margin-bottom: 24px;
+  padding-right: 16px;
 
   h1 {
     font-size: 24px;

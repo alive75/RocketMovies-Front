@@ -1,52 +1,44 @@
-import { useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { Container, Top, Content } from "./style";
-import { Button } from "../../components/Button";
+import { useEffect, useState } from "react";
+import { Container } from "./style";
 import { Header } from "../../components/Header";
-import { MovieCard } from "../../components/MovieCard";
-import { LuPlus } from "react-icons/lu";
-import { useNavigate } from "react-router-dom"
+import { Main } from "../../components/Main"
 
 export function Home() {
 
+    const [search, setSearch] = useState('')
     const [movies, setMovies] = useState([])
 
-    const navigate = useNavigate()
-
-    function handleNew() {
-        navigate('/new')
+    const handleSearch = (data) => {
+        setSearch(data)
+        console.log(search)
     }
 
     useEffect(() => {
         async function fetchMovies() {
             const response = await api.get("/movies")
-            console.log((response.data))
             setMovies(response.data)
         }
         fetchMovies()
     }, [])
 
+    useEffect(() => {
+        async function searchMovies() {
+            const response = await api.get(`/movies?title=${search}`)
+            setMovies(response.data)
+        }
+        searchMovies()
+    }, [search])
+
+
     return (
         <Container>
-            <Header />
-            <Top>
-                <h1>Meus Filmes</h1>
-                <Button
-                    icon={LuPlus}
-                    title="Adicionar filme"
-                    onClick={handleNew}
-                />
-            </Top>
-            <Content id="scroll">
-                {
-                    movies.map(movie => (
-                        <MovieCard
-                            key={String(movie.id)}
-                            data={movie}
-                        />
-                    ))
-                }
-            </Content>
+            <Header
+                onSearch={handleSearch}
+            />
+            <Main
+                moviesData={movies}
+            />
         </Container>
     )
 }

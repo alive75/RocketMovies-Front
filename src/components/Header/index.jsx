@@ -5,8 +5,12 @@ import { Input } from "../Input"
 import avatarPlaceholder from "../../assets/avatar_placeholder.svg"
 import { useNavigate } from "react-router-dom"
 import { api } from "../../services/api";
+import { useEffect, useState } from "react";
 
-export function Header() {
+export function Header({ onSearch }) {
+
+    const [inputValue, setInputValue] = useState('')
+
 
     const { signOut, user } = useAuth()
     const navigate = useNavigate()
@@ -22,6 +26,8 @@ export function Header() {
 
     const avatarURL = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
+    let value
+
     return (
         <Container>
             <Brand>
@@ -33,6 +39,13 @@ export function Header() {
 
             <Input
                 placeholder="Pesquisar pelo título"
+                onChange={
+                    (e) => {
+                        value = e.target.value
+                        setInputValue(e.target.value)
+                        onSearch(value)
+                    }
+                }
             />
 
             <Profile>

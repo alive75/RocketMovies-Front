@@ -4,7 +4,6 @@ import { StarEmpty } from "../StarEmpty"
 export function Stars({ rating }) {
 
     let stars
-    console.log(rating)
 
     switch (rating) {
         case '0':
