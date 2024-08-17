@@ -66,17 +66,17 @@ export const Content = styled.div`
 
     span {
     display: flex;
-    text-align: center;
     width: 100%;
     height: 30px;
     
     > div {
     display: flex;
-    align-items: center;
+  
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_RED};
     
     > p{
     text-align: center;
+    margin: 5px 16px;
 }
 
 }

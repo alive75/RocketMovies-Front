@@ -17,13 +17,13 @@ export function SignIn() {
 
     const { signIn } = useAuth()
 
+    function handleRegister() {
+        navigate('/register')
+    }
     function handleSignIn() {
         signIn({ email, password })
     }
 
-    function handleRegister() {
-        navigate('/register')
-    }
 
     return (
         <Container>

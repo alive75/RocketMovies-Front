@@ -1,32 +1,40 @@
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom"
+import { api } from "../../services/api";
+import { useAuth } from "../../hooks/auth";
+import { DateTime } from "luxon";
 import { Container, Top, Content } from "./style";
 import { LuArrowLeft, LuClock } from "react-icons/lu";
 import { ButtonText } from "../../components/ButtonText";
 import { Tag } from "../../components/Tag";
 import { Stars } from "../../components/Stars";
 import { Header } from "../../components/Header"
-import { useNavigate } from "react-router-dom"
 
 export function Details() {
-    const tags = [{
-        id: 1,
-        name: "Ficção Cientifica"
-    },
-    {
-        id: 2,
-        name: "Drama"
-    },
-    {
-        id: 3,
-        name: "Suspense"
-    },
+    const [data, setData] = useState("")
 
-    ]
+    const { user } = useAuth()
+
+    const avatarURL = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
+
+    const params = useParams()
 
     const navigate = useNavigate()
 
     function handleBack() {
         navigate(-1)
     }
+
+    useEffect(() => {
+        async function fetchMovie() {
+            const response = await api.get(`/movies/${params.id}`)
+            setData(response.data)
+        }
+        fetchMovie()
+    }, [])
+
+    const dt = DateTime.fromSQL(data.created_at).setLocale('br').toFormat(`dd/LL/yy 'às' hh:mm`)
+
 
     return (
 
@@ -45,28 +53,28 @@ export function Details() {
 
                 <div className="title">
                     <h1>
-                        Ex Machina
+                        {data.title}
                     </h1>
-                    <Stars rating='4' />
+                    <Stars rating={String(data.rating)} />
                 </div>
                 <p>
-                    <img src="http://github.com/alive75.png" alt="Profile Picture" />
-                    Por Thiago Santana
+                    <img src={avatarURL} alt={user.name} />
+                    Por {user.name}
                     <LuClock />
-                    24/07/2024 às 22:55
+                    {dt}
                 </p>
 
                 {
-                    tags &&
+                    data.tags &&
                     <span>
                         {
-                            tags.map(tag => <Tag key={tag.id} title={tag.name} />)
+                            data.tags.map(tag => <Tag key={tag.id} title={tag.name} />)
                         }
                     </span>
                 }
 
                 <div className="description">
-                    <p>Caleb, a coder at the world’s largest internet company, wins a competition to spend a week at a private mountain retreat belonging to Nathan, the reclusive CEO of the company. But when Caleb arrives at the remote location he finds that he will have to participate in a strange and fascinating experiment in which he must interact with the world’s first true artificial intelligence, housed in the body of a beautiful robot girl.</p>
+                    <p>{data.description}</p>
                 </div>
             </Content>
 
